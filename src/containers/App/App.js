@@ -1,6 +1,6 @@
 import React from 'react';
 import ContactForm from '../ContactForm/ContactForm'
-import ContactContainer from '../../components/ContactContainer/ContactContainer'
+import ContactContainer from '../ContactContainer/ContactContainer'
 import './App.css';
 
 function App() {

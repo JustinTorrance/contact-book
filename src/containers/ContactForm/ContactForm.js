@@ -3,9 +3,8 @@ import { addContact } from '../../actions'
 import { connect } from 'react-redux'
 
 export class ContactForm extends Component {
-  constructor(props) {
-    super(props)
-    console.log(props)
+  constructor() {
+    super()
     this.state = {
       firstName: '',
       lastName: '',
@@ -17,7 +16,6 @@ export class ContactForm extends Component {
   handleChange = (e) => {
     const { name, value } = e.target
     this.setState({ [name]: value})
-    console.log(this.props)
   }
 
   handleSubmit = (e) => {
