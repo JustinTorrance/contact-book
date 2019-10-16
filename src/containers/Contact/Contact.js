@@ -4,10 +4,9 @@ function Contact(props) {
   console.log(props)
   return (
     <article className="Contact">
-      <p>{props.firstName}</p>  
-      <p>{props.lastName}</p>      
-      <p>{props.phone}</p>      
-      <p>{props.email}</p>      
+      <h3>{props.firstName} {props.lastName}</h3>  
+      <p>Phone: {props.phone}</p>      
+      <p>Email: {props.email}</p>      
     </article>
   );
 }
