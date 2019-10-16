@@ -9,13 +9,11 @@ export class ContactContainer extends Component {
 
 
     let displayContacts = this.props.allContacts.map(contact => {
-      // console.log('container', contact)
       return <Contact {...contact} key={shortid.generate()} />
     })
 
     return (
       <section className="ContactContainer">
-        <p>Containerrrr</p>
         { displayContacts }
       </section>
     );
