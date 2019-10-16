@@ -13,6 +13,15 @@ export class ContactForm extends Component {
     }
   }
 
+  clearForms = () => {
+    this.setState({ 
+      firstName: '', 
+      lastName: '',
+      email: '',
+      phone: ''
+    })
+  }
+
   handleChange = (e) => {
     const { name, value } = e.target
     this.setState({ [name]: value})
@@ -21,6 +30,7 @@ export class ContactForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.addContact(this.state)
+    this.clearForms()
   }
 
   render() {
@@ -52,7 +62,7 @@ export class ContactForm extends Component {
           onChange={this.handleChange}
         />
         <input 
-          type="text"
+          type="email"
           value={email}
           name='email'
           placeholder='Email'
