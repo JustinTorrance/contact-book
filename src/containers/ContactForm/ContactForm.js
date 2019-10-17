@@ -38,8 +38,8 @@ export class ContactForm extends Component {
     const { firstName, lastName, phone, email } = this.state
 
     return(
-      <form onSubmit={(e) => this.handleSubmit(e)}>
-        <p>Create New Contact</p>
+      <form className='contact-form' onSubmit={(e) => this.handleSubmit(e)}>
+        <p className='new-contact-title'>Create New Contact:</p>
         <input 
           type="text"
           value={firstName}
@@ -68,7 +68,7 @@ export class ContactForm extends Component {
           placeholder='Email'
           onChange={this.handleChange}
         />
-        <button type='submit'>
+        <button type='submit' className='submit-btn btn'>
           Add Contact
         </button>
       </form>

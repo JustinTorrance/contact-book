@@ -1,0 +1,23 @@
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 0px 20px 20px 20px;
+  box-shadow: 5px 5px 5px 5px #C9BFC0;
+  input {
+    margin-bottom: 10px;
+    z-index: 4;
+  }
+}
+
+.new-contact-title {
+  margin: 20px 0 10px 0
+}
+
+.submit-btn, input {
+  height: 40px;
+}
+
+.submit-btn {
+  font-size: 1.1rem;
+}

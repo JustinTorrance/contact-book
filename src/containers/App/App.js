@@ -1,12 +1,12 @@
 import React from 'react';
 import ContactForm from '../ContactForm/ContactForm'
 import ContactContainer from '../ContactContainer/ContactContainer'
-import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <h1 className='my-contacts-title'>My Contacts</h1>
+      <h1 className='my-contacts-title'>Contax</h1>
+      <p className='description'>A secure place to backup your phone's contacts</p>
       <ContactForm />
       <ContactContainer />
     </div>

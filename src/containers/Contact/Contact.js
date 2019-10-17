@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { deleteContact, editContact } from '../../actions'
+import ExpansionPanel from '@material-ui/core/ExpansionPanel'
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 export class Contact extends Component {
   constructor(props) {
@@ -36,18 +40,29 @@ export class Contact extends Component {
     const { id, lastName, firstName, phone, email, deleteContact} = this.props
     
     let nonEditingContact = <article className="contact">
-                              <h3>{firstName} {lastName}</h3>  
+                            <ExpansionPanel className='expansion-panel'>
+                              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} className='expansion-summary'>
+                                <h3>{firstName} {lastName}</h3>  
+
+                              </ExpansionPanelSummary >
+                              <ExpansionPanelDetails className='expansion-details'>
+
                               <p>Phone: {phone}</p>      
                               <p>Email: {email}</p>
-                              <button className='delete-btn' onClick={() => deleteContact(id)}> 
-                                Delete
-                              </button>  
-                              <button className='edit-btn' onClick={this.toggleEdit}> 
-                                Edit
-                              </button>  
+                              <div className='card-btn-div'>
+                                <button className='delete-btn card-btn btn' onClick={() => deleteContact(id)}> 
+                                  Delete
+                                </button>  
+                                <button className='edit-btn card-btn btn' onClick={this.toggleEdit}> 
+                                  Edit
+                                </button>  
+                              </div>
+                              </ExpansionPanelDetails>
+
+                            </ExpansionPanel>
                             </article>
 
-    let editingContact =  <form className="contact">
+    let editingContact =  <form className="contact-edit-form">
                             <div className='edit-div'>
                               <p>First Name: </p>
                               <input 
@@ -84,8 +99,8 @@ export class Contact extends Component {
                                 onChange={this.handleChange} 
                               />
                             </div>
-                            <button onClick={this.saveEdit}>
-                              Save changes
+                            <button onClick={this.saveEdit} className='save-btn card-btn btn'>
+                              Save Changes
                             </button>
                           </form>
 
