@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
+
+.App {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: url('../../assets/desk.jpg');
+  background-size: 100%;
+  background-position: center;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.description {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  margin-bottom: 50px;
+  color: #4D251A;
+}
+
+.my-contacts-title {
+  margin: 50px 0 10px 0;
+  font-size: 4rem;
+  color: #4D251A;
+}
+
+input {
+  font-size: 1.2rem;
+  padding-left: 4px;
+  border: 0;
+  outline: 0;
+  border-bottom: 2px solid gray;
+  ::placeholder {
+    color: #4D2519;
+  }
+}
+
+.btn {
+  background-color: #4D251A;
+  color: white;
+  border-radius: 20px;
+  &:hover {
+    background-color: white;
+    color: #4D251A;
+    cursor: pointer;
+    transition: .3s;
+  }
+}
+

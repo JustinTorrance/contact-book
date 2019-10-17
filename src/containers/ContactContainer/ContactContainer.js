@@ -13,7 +13,7 @@ export class ContactContainer extends Component {
     })
 
     return (
-      <section className="ContactContainer">
+      <section className="contact-container">
         { displayContacts }
       </section>
     );
