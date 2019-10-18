@@ -1,24 +1,27 @@
 import React, { Component } from 'react'
-import { addContact } from '../../actions'
 import { connect } from 'react-redux'
+import { postContact } from '../../thunks/postContact'
+import { fetchContacts} from '../../thunks/fetchContacts'
+import shortid from 'shortid'
+import PropTypes from 'prop-types'
 
 export class ContactForm extends Component {
   constructor() {
     super()
     this.state = {
-      firstName: '',
-      lastName: '',
-      phone: '',
+      first_name: '',
+      last_name: '',
+      phone_num: '',
       email: ''
     }
   }
 
   clearForms = () => {
     this.setState({ 
-      firstName: '', 
-      lastName: '',
+      first_name: '', 
+      last_name: '',
       email: '',
-      phone: ''
+      phone_num: ''
     })
   }
 
@@ -27,37 +30,38 @@ export class ContactForm extends Component {
     this.setState({ [name]: value})
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault()
-    this.props.addContact(this.state)
+    await this.props.postContact({...this.state, id: shortid.generate()})
+    await this.props.fetchContacts()
     this.clearForms()
   }
 
   render() {
 
-    const { firstName, lastName, phone, email } = this.state
+    const { first_name, last_name, phone_num, email } = this.state
 
     return(
       <form className='contact-form' onSubmit={(e) => this.handleSubmit(e)}>
         <p className='new-contact-title'>Create New Contact:</p>
         <input 
           type="text"
-          value={firstName}
-          name='firstName'
+          value={first_name}
+          name='first_name'
           placeholder='First name'
           onChange={this.handleChange}
         />
         <input 
           type="text"
-          value={lastName}
-          name='lastName'
+          value={last_name}
+          name='last_name'
           placeholder='Last name'
           onChange={this.handleChange}
         />
         <input 
           type="number"
-          value={phone}
-          name='phone'
+          value={phone_num}
+          name='phone_num'
           placeholder='Phone'
           onChange={this.handleChange}
         />
@@ -76,8 +80,14 @@ export class ContactForm extends Component {
   }
 }
 
+ContactForm.propTypes = {
+  fetchContacts: PropTypes.func.isRequired,
+  postContact: PropTypes.func.isRequired
+}
+
 export const mapDispatchToProps = (dispatch) => ({
-  addContact: (contact) => dispatch(addContact(contact))
+  fetchContacts: () => dispatch(fetchContacts()),
+  postContact: (contact) => dispatch(postContact(contact))
 })
 
 export default connect(null, mapDispatchToProps)(ContactForm)
