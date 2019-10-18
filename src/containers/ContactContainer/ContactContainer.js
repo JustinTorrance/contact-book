@@ -3,6 +3,8 @@ import Contact from '../Contact/Contact'
 import { connect } from 'react-redux'
 import shortid from 'shortid'
 import { fetchContacts } from '../../thunks/fetchContacts'
+import PropTypes from 'prop-types'
+
 
 export class ContactContainer extends Component {
 
@@ -22,6 +24,11 @@ export class ContactContainer extends Component {
       </section>
     );
   }
+}
+
+ContactContainer.propTypes = {
+  fetchContacts: PropTypes.func.isRequired,
+  allContacts: PropTypes.array
 }
 
 export const mapDispatchToProps = (dispatch) => ({

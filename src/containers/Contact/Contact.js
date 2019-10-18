@@ -7,6 +7,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { deleteContact } from '../../thunks/deleteContact'
 import { fetchContacts } from '../../thunks/fetchContacts'
 import { updateContact } from '../../thunks/updateContact'
+import PropTypes from 'prop-types'
 
 export class Contact extends Component {
   constructor(props) {
@@ -115,11 +116,20 @@ export class Contact extends Component {
   }
 }
 
+Contact.propTypes = {
+  fetchContacts: PropTypes.func.isRequired,
+  updateContact: PropTypes.func.isRequired,
+  deleteContact: PropTypes.func.isRequired,
+  first_name: PropTypes.string,
+  last_name: PropTypes.string, 
+  email: PropTypes.string,
+  phone_num: PropTypes.string
+}
+
 export const mapDispatchToProps = (dispatch) => ({
   deleteContact: (id) => dispatch(deleteContact(id)),
   fetchContacts: () => dispatch(fetchContacts()),
   updateContact: (contact) => dispatch(updateContact(contact))
-
 })
 
 export default connect(null, mapDispatchToProps)(Contact)

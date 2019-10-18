@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { postContact } from '../../thunks/postContact'
 import { fetchContacts} from '../../thunks/fetchContacts'
 import shortid from 'shortid'
+import PropTypes from 'prop-types'
 
 export class ContactForm extends Component {
   constructor() {
@@ -77,6 +78,11 @@ export class ContactForm extends Component {
       </form>
     )
   }
+}
+
+ContactForm.propTypes = {
+  fetchContacts: PropTypes.func.isRequired,
+  postContact: PropTypes.func.isRequired
 }
 
 export const mapDispatchToProps = (dispatch) => ({
